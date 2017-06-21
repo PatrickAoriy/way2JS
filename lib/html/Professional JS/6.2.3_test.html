@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    /**
+     * 一个空的构造函数
+     * @constructor
+     */
+    function Person(){
+    }
+    /**
+     * 我们将sayName的属性和方法添加到了Person的prototype中
+     * @type {String}
+     */
+    Person.prototype.name="ANN";
+    Person.prototype.age=29;
+    Person.prototype.job="magician";
+    Person.prototype.sayName=function(){
+      alert(this.name);
+    };
+    /**
+     * 通过构造函数来创建新的对象
+     * @type {Person}
+     */
+    var person1=new Person();
+    person1.sayName();//ANN
+
+    var person2=new Person();
+    person2.sayName();
+    /**
+     * person1和person2访问的是同一组属性和同一个sayName方法。
+     * @type {[type]}
+     */
+    alert(person1.sayName==person2.sayName);
+  </script>
+</body>
+</html>

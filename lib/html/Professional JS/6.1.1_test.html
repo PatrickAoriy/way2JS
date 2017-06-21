@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var person = {};
+    /**
+     * [writable description]创建一个名为name的属性，它的值是可读的，也就是说不可以更改
+     * @type {Boolean}
+     */
+    Object.defineProperty(person, "name", {
+      writable: false,
+      value: "Nice"
+    });
+    alert(person.name);
+    person.name = "greg";
+    alert(person.name);
+    /**
+     * [configurable description]在空对象创建一个age属相，它的值是不能通过delete删除属相而重新定义的
+     * 如果它的值为true那么弹出的就是undefine
+     * @type {Boolean}
+     */
+    Object.defineProperty(person, "age", {
+      configurable: false,
+      value: 29
+    });
+    alert(person.age);
+    delete person.age;
+    alert(person.age);
+    /**
+     * [book description]年份前面的下划线是一种常用的记号，表示只可以通过对象方法访问的属性
+     * @type {Object}
+     */
+    var book = {
+      year: 2004,
+      edition: 1
+    };
+
+    Object.defineProperty(book, "year", {
+      // get:function(){
+      //   return this._year;
+      // },
+      set: function(newValue) {
+        if (newValue > 2004) {
+          this.year = newValue;
+          this.edition += newValue - 2004;
+        }
+      }
+    });
+    book.year = 2005;
+    alert(book.edition); //2
+  </script>
+</body>
+
+</html>
